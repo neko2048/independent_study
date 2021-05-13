@@ -1,0 +1,62 @@
+1. Surface 
+
+dimensions:
+        Time = UNLIMITED ; // (1 currently)
+        south_north = 128 ;
+        west_east = 128 ;
+variables:
+        float Time(Time) ;
+                Time:axis = "Time" ;
+                Time:long_name = "Time" ;
+                Time:standard_name = "Time" ;
+                Time:units = "minutes since 1900-01-01 " ;
+        double yb(south_north) ;
+                yb:axis = "Y" ;
+                yb:long_name = "y-coordinate of grid cell boundaries in Cartesian system" ;
+                yb:units = "m" ;
+        double xb(west_east) ;
+                xb:axis = "X" ;
+                xb:long_name = "x-coordinate of grid cell boundaries in Cartesian system" ;
+                xb:units = "m" ;
+        float uw(Time, south_north, west_east) ;
+                uw:long_name = "Surface flux of u-momentum" ;
+                uw:standard_name = "sfc_flux_u_momentum" ;
+                uw:units = "kg m-1 s-2" ;
+                uw:_FillValue = 9.96921e+36f ;
+                uw:missing_value = 9.96921e+36f ;
+        float wv(Time, south_north, west_east) ;
+                wv:long_name = "Surface flux of v-momentum" ;
+                wv:standard_name = "sfc_flux_v_momentum" ;
+                wv:units = "kg m-1 s-2" ;
+                wv:_FillValue = 9.96921e+36f ;
+                wv:missing_value = 9.96921e+36f ;
+        float wth(Time, south_north, west_east) ;
+                wth:long_name = "Surface flux of potential temperature" ;
+                wth:standard_name = "sfc_flux_theta" ;
+                wth:units = "K kg m-2 s-1" ;
+                wth:_FillValue = 9.96921e+36f ;
+                wth:missing_value = 9.96921e+36f ;
+        float wqv(Time, south_north, west_east) ;
+                wqv:long_name = "Surface flux of water vapor" ;
+                wqv:standard_name = "sfc_flux_water_vapor" ;
+                wqv:units = "kg m-2 s-1" ;
+                wqv:_FillValue = 9.96921e+36f ;
+                wqv:missing_value = 9.96921e+36f ;
+        float sprec(Time, south_north, west_east) ;
+                sprec:long_name = "Surface precipitation rate" ;
+                sprec:standard_name = "sfc_precip_rate" ;
+                sprec:units = "kg m-2 s-1" ;
+                sprec:_FillValue = 9.96921e+36f ;
+                sprec:missing_value = 9.96921e+36f ;
+        float tg(Time, south_north, west_east) ;
+                tg:long_name = "Skin and sea surface temperature" ;
+                tg:standard_name = "Skin_temp" ;
+                tg:units = "K" ;
+                tg:_FillValue = 9.96921e+36f ;
+                tg:missing_value = 9.96921e+36f ;
+        float olr(Time, south_north, west_east) ;
+                olr:long_name = "Outgoing longwave radiation" ;
+                olr:standard_name = "outgoing_longwave_radiation" ;
+                olr:units = "W m-2" ;
+                olr:_FillValue = 9.96921e+36f ;
+                olr:missing_value = 9.96921e+36f ;
