@@ -65,7 +65,7 @@ def draw_thp(init, end):
 		title('Thermal Bubble @ t = '+ str(t) + ' min')
 		xlabel('X (m)')
 		ylabel('Z (m)')
-		savefig('th'+td_files[n][-9:-3]+'.png', dpi=300)
+		savefig('th'+td_files[n][-9:-3]+'.jpg', dpi=300)
 		clf()
 
 def draw_vapor(init, end):
@@ -101,7 +101,7 @@ def draw_vapor(init, end):
 		title('Vapor Distribution @ t = '+ str(t) + ' min')
 		xlabel('X (m)')
 		ylabel('Z (m)')
-		savefig('vapor'+f[-9:-3]+'.png', dpi=300)
+		savefig('vapor'+f[-9:-3]+'.jpg', dpi=300)
 		clf()
 
 

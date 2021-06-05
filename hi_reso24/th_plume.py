@@ -8,9 +8,10 @@ import glob
 import os
 ##### import lib from the parent folder #####
 sys.path.insert(1, '../') # move 2 parent folder (figures/)
-from function import progressbar
+from function import progressbar, buoyancy
 from nclcmaps import nclcmap
 # ===========================================
+
 def average(init, end):
     total = end - init
     thmean = np.zeros((len(z), ))
@@ -26,7 +27,13 @@ def average(init, end):
         th = np.nanmean(th, axis=(1, 2))
         thbar = np.mean(td['th'][0, :len(z), :, :], axis=(1, 2))
         thmean += (th - thbar) / total
-        buomean += (th - thbar) / thbar / total
+        
+        th = td['th'][0, :len(z)]
+        qv = td['qv'][0, :len(z)]
+        B = buoyancy(th=th, qv=qv) * area
+        B = np.where(B == 0., np.nan, B)
+        B = np.nanmean(B, axis=(1, 2))
+        buomean += B / total
         
         dy = netCDF4.Dataset(dy_files[n])
         w = np.mean(dy['w'][0, :len(z)] * area, axis=(1, 2))
@@ -52,7 +59,13 @@ def draw_snapshot(init, end):
         th = np.where(th == 0., np.nan, th)
         th = np.nanmean(th, axis=(1, 2))
         thss[tidx-init, :] = th - thbar
-        buoss[tidx-init, :] = (th - thbar) / thbar
+
+        th = td['th'][0, :len(z)]
+        qv = td['qv'][0, :len(z)]
+        B = buoyancy(th=th, qv=qv) * area
+        B = np.where(B == 0., np.nan, B)
+        B = np.nanmean(B, axis=(1, 2))
+        buoss[tidx-init, :] = B
 
         dy = netCDF4.Dataset(dy_files[tidx])
         w = np.mean(dy['w'][0, :len(z)] * area, axis=(1, 2))
@@ -83,7 +96,8 @@ def draw_snapshot(init, end):
     pcolormesh(np.arange(init, end), z, buoss.transpose(),
                shading='near', cmap='coolwarm', vmin=-0.004, vmax=0.004)
     colorbar()
-    contour(np.arange(init, end), z, wss.transpose(), cmap='winter', linewidths=0.5)
+    C = contour(np.arange(init, end), z, wss.transpose(), cmap='viridis', linewidths=0.5)
+    clabel(C, inline=True, fontsize=7.5)
     xlabel('Time (min)', fontsize=12); ylabel('Height (m)', fontsize=12)
     title(r"Buoyancy in spatial average")
     savefig('buoss.jpg', dpi=300)
@@ -148,7 +162,6 @@ if __name__ == '__main__':
     ##### universal variables #####
     dt = netCDF4.Dataset(td_files[0]) # take initial state
     z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
-    print(np.max(z))
     x = x - max(x)/2
     xslice = slice(0, len(x))
     z = z[z<=15000]
