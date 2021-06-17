@@ -129,29 +129,31 @@ def draw_thp(init, end):
     ##### draw th-thbar #####
     ax1 = subplot(111)
     wmean = np.expand_dims(wmean, axis=-1)
-    bar1 = ax1.plot(wmean, z, color='black')
-    ax1.set_title('Average from '+str(init) + ' to ' + str(end), fontsize=30)
+    bar1 = ax1.plot(wmean, z, color='black', label='mean W')
+    ax1.set_title('From '+str(init) + ' to ' + str(end), fontsize=15)
     if np.min(wmean) >= 0: 
         ax1.set_xlim(0, 0.07)
     else:
         ax1.set_xlim(np.min(wmean), 0.07)
     ax1.set_ylabel('Z (m)')
-    ax1.set_xlabel('Average Vertical Velocity')
+    ax1.set_xlabel('Average Vertical Velocity', fontsize=15)
     ##### draw w #####
     ax2 = ax1.twiny()
     thmean = np.expand_dims(thmean, axis=-1)
     buomean = np.expand_dims(buomean, axis=-1)
-    if np.min(wmean) >= 0:
-        bar2 = ax1.pcolormesh([0, 0.07], z, buomean, cmap='coolwarm', 
-        vmin=-np.max(buomean), vmax=np.max(buomean), shading='nearest')
-    else:
-        bar2 = ax1.pcolormesh([np.min(wmean), 0.07], z, buomean, cmap='coolwarm', 
-        vmin=-np.max(buomean), vmax=np.max(buomean), shading='nearest')
-    #bar2 = ax2.plot(buomean, z, color='red')
+    #if np.min(wmean) >= 0:
+    #    bar2 = ax1.pcolormesh([0, 0.07], z, buomean, cmap='coolwarm', 
+    #    vmin=-np.max(buomean), vmax=np.max(buomean), shading='nearest')
+    #else:
+    #    bar2 = ax1.pcolormesh([np.min(wmean), 0.07], z, buomean, cmap='coolwarm', 
+    #    vmin=-np.max(buomean), vmax=np.max(buomean), shading='nearest')
+    bar2 = ax2.plot(buomean, z, color='red', label='mean buoyancy [m / s^2]')
     #ax2.set_xlim(-0.0015, 0.0005)
-    cbar1 = fig.colorbar(bar2, extend='both')
-    cbar1.set_label('Buoyancy ($x 10^{-5}$)', rotation=270, fontsize=15)
-    savefig('th_average.png', dpi=300)
+    #cbar1 = fig.colorbar(bar2, extend='both')
+    #cbar1.set_label('Buoyancy ($x 10^{-5}$)', rotation=270, fontsize=15)
+    ax2.set_xlabel('Average Buoyancy [m / s^2]', fontsize=15, color='red')
+    fig.legend(fontsize=15)
+    savefig('th_average.png', dpi=100)
     clf()
 
 def massflux_ss(init, end):
@@ -200,8 +202,8 @@ if __name__ == '__main__':
     area = np.tile(area, (len(z), 1, 1))
     # =============================
 
-    init, end = 5, 27 # from bubble up to dissipated
+    init, end = 10, 27 # from bubble up to dissipated
     
     #draw_snapshot(0, len(td_files)) # from started to end
     draw_thp(init, end)
-    massflux_ss(init, end)
+    #massflux_ss(init, end)

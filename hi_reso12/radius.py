@@ -2,8 +2,8 @@ import numpy as np
 import netCDF4
 
 
-td_loc = '/media/wk2/atmenu10246/VVM/DATA/hi_reso/archive/'
-td0 = netCDF4.Dataset(td_loc+'hi_reso.L.Thermodynamic-000000.nc')
+td_loc = '/media/wk2/atmenu10246/VVM/DATA/hi_reso12/archive/'
+td0 = netCDF4.Dataset(td_loc+'hi_reso12.L.Thermodynamic-000000.nc')
 thbar = td0['th'][0, :, 5, 5]
 x = td0['xc']
 z = td0['zc']

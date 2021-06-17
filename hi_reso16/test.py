@@ -11,6 +11,7 @@ expname = 'hi_reso24'
 
 dt = netCDF4.Dataset("/media/wk2/atmenu10246/VVM/DATA/"+expname+"/archive/"+expname+".L.Thermodynamic-000000.nc")
 z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
+print(z.shape)
 z = z[z<= 5000]
 th = dt['th'][0, :len(z), :, :]
 thbar = np.mean(dt['th'][0, :len(z), :, :], axis=(1, 2))
@@ -22,6 +23,8 @@ dt = netCDF4.Dataset("/media/wk2/atmenu10246/VVM/DATA/"+expname+"/archive/"+expn
 th = dt['th'][0, :len(z), :, :]
 thbar = np.mean(dt['th'][0, :len(z), :, :], axis=(1, 2))
 qv = dt['qv'][0, :len(z), :, :]
+density = np.loadtxt('../density.txt')
+print(density)
 def Draw():
     B = buoyancy(th, qv)
     for i in range(len(z)):
@@ -32,4 +35,4 @@ def Draw():
         savefig('tharea%s.jpg'%z[i])
         clf()
 
-Draw()
+#Draw()

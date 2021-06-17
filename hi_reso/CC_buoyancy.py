@@ -32,8 +32,10 @@ def buoyancy_draw(init, end):
 		th = td['th'][0, :, :, :]
 		qv = td['qv'][0, :, :, :]
 		buo = buoyancy(th=th, qv=qv)
-		contourf(x, z, buo[:len(z), y_prof, :], vmin=-0.02, vmax=0.02)
+		contourf(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, cmap='coolwarm', levels=20)
 		colorbar()
+		la = contour(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, levels=20)
+		clabel(la, inline=True)
 		title('Time: %06d'%t_idx)
 		savefig('buoyancy%06d.jpg'%t_idx, dpi=300)
 		clf()
@@ -167,13 +169,13 @@ if __name__ == '__main__':
 	dt = netCDF4.Dataset(td_files[0]) # take initial state
 	z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
 	x = x - max(x)/2
-	z = z[z<=15000]
+	z = z[z<=3000]
 	xx, zz = np.meshgrid(x, z)
 	thbar = np.array(dt['th'][0, :len(z), 5, 5])
 	thbar = np.tile(thbar, (128, 1)).transpose()
 	y_prof =  63 # max thbar index
 	# =============================
-	init, end = 0, len(td_files)
+	init, end = 0, 10#len(td_files)
 	#core_draw(init, end)
 	#cloud_draw(init, end)
 	buoyancy_draw(init, end)

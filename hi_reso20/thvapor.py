@@ -108,4 +108,4 @@ def draw_vapor(init, end):
 if __name__ == '__main__':
 	init, end = 0, len(td_files)
 	draw_thp(init, end)
-	#draw_vapor(init, end)
+	draw_vapor(init, end)

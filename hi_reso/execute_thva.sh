@@ -3,7 +3,7 @@ CURRENT=`pwd`
 BASENAME=`basename "$CURRENT"`
 
 # check folder exists or not
-rm ./th*.png ./vapor*.png
+rm ./th*.jpg ./vapor*.jpg
 rm ./th/* ./vapor/*
 mkdir th vapor
 
@@ -14,9 +14,9 @@ echo "$BASENAME" | python -W ignore thvapor.py
 rm th.mkv
 rm vapor.mkv
 echo "create video..."
-ffmpeg -framerate 5 -i th%06d.png th.mkv
-ffmpeg -framerate 5 -i vapor%06d.png vapor.mkv
+ffmpeg -framerate 5 -i th%06d.jpg th.mp4
+ffmpeg -framerate 5 -i vapor%06d.jpg vapor.mp4
 
-# move png to folder
-mv th*.png ./th/
-mv vapor*.png ./vapor/
+# move jpg to folder
+mv th*.jpg ./th/
+mv vapor*.jpg ./vapor/

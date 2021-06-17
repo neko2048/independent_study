@@ -2,31 +2,35 @@ import numpy as np
 from matplotlib.pyplot import *
 import matplotlib.cm as cm
 from matplotlib.colors import LinearSegmentedColormap
-from nclcmaps import nclcmap
 import netCDF4
 import sys
 import glob
-sys.path.insert(1, '../')
+import os
+##### import lib from the parent folder #####
+sys.path.insert(1, '../') # move 2 parent folder (figures/)
 from function import progressbar
-##### retrieve file names & location #####
-exp_name = 'walter_small'
+from nclcmaps import nclcmap
+# ===========================================
+
+exp_name = str(input())
 td_loc = '/media/wk2/atmenu10246/VVM/DATA/' + exp_name + '/archive/'
 td_files, dy_files = [], []
 for td, dy in zip(glob.glob(td_loc +exp_name + '.L.Thermodynamic-??????.nc'), glob.glob(td_loc + exp_name + '.L.Dynamic-??????.nc')):
 	td_files.append(td)
 	dy_files.append(dy)
 print('Appended nc files: '+ str(len(td_files)))
+# ========================================
 
 ##### universal variables #####
 dt = netCDF4.Dataset(td_files[0]) # take initial state
 z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
-#print(x)
 x = x - max(x)/2
 xslice = slice(0, len(x))
-z = z[z<=12500]
+z = z[z<=15000]
 thbar = np.mean(dt['th'][0, :len(z), :, :], axis=(1, 2))
 thbar = np.tile(thbar, (len(x), 1)).transpose()
 y_prof =  63# max thbar index
+# =============================
 
 def draw_thp(init, end):
 	for n in range(init, end):
@@ -61,7 +65,7 @@ def draw_thp(init, end):
 		title('Thermal Bubble @ t = '+ str(t) + ' min')
 		xlabel('X (m)')
 		ylabel('Z (m)')
-		savefig('th'+td_files[n][-9:-3]+'.png', dpi=300)
+		savefig('th'+td_files[n][-9:-3]+'.jpg', dpi=300)
 		clf()
 
 def draw_vapor(init, end):
@@ -97,11 +101,11 @@ def draw_vapor(init, end):
 		title('Vapor Distribution @ t = '+ str(t) + ' min')
 		xlabel('X (m)')
 		ylabel('Z (m)')
-		savefig('vapor'+f[-9:-3]+'.png', dpi=300)
+		savefig('vapor'+f[-9:-3]+'.jpg', dpi=300)
 		clf()
 
 
 if __name__ == '__main__':
-	init, end = 0, 50#len(td_files)
+	init, end = 0, len(td_files)
 	draw_thp(init, end)
 	draw_vapor(init, end)

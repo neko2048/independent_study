@@ -1,0 +1,69 @@
+rm: 無法移除 ‘./vapor*.jpg’: 沒有此一檔案或目錄
+rm: 無法移除 ‘./th/*’: 沒有此一檔案或目錄
+rm: 無法移除 ‘./vapor/*’: 沒有此一檔案或目錄
+mkdir: 無法建立目錄‘th’: 檔案已存在
+mkdir: 無法建立目錄‘vapor’: 檔案已存在
+Appended nc files: 77
+[          ] 0%  draw theta @ 1/77[          ] 1%  draw theta @ 2/77[          ] 2%  draw theta @ 3/77[          ] 3%  draw theta @ 4/77[          ] 5%  draw theta @ 5/77[          ] 6%  draw theta @ 6/77[          ] 7%  draw theta @ 7/77[          ] 9%  draw theta @ 8/77[=         ] 10%  draw theta @ 9/77[=         ] 11%  draw theta @ 10/77[=         ] 12%  draw theta @ 11/77[=         ] 14%  draw theta @ 12/77[=         ] 15%  draw theta @ 13/77[=         ] 16%  draw theta @ 14/77[=         ] 18%  draw theta @ 15/77[=         ] 19%  draw theta @ 16/77[==        ] 20%  draw theta @ 17/77[==        ] 22%  draw theta @ 18/77[==        ] 23%  draw theta @ 19/77[==        ] 24%  draw theta @ 20/77[==        ] 25%  draw theta @ 21/77[==        ] 27%  draw theta @ 22/77[==        ] 28%  draw theta @ 23/77[==        ] 29%  draw theta @ 24/77[===       ] 31%  draw theta @ 25/77[===       ] 32%  draw theta @ 26/77[===       ] 33%  draw theta @ 27/77[===       ] 35%  draw theta @ 28/77[===       ] 36%  draw theta @ 29/77[===       ] 37%  draw theta @ 30/77[===       ] 38%  draw theta @ 31/77[====      ] 40%  draw theta @ 32/77[====      ] 41%  draw theta @ 33/77[====      ] 42%  draw theta @ 34/77[====      ] 44%  draw theta @ 35/77[====      ] 45%  draw theta @ 36/77[====      ] 46%  draw theta @ 37/77[====      ] 48%  draw theta @ 38/77[====      ] 49%  draw theta @ 39/77[=====     ] 50%  draw theta @ 40/77[=====     ] 51%  draw theta @ 41/77[=====     ] 53%  draw theta @ 42/77[=====     ] 54%  draw theta @ 43/77[=====     ] 55%  draw theta @ 44/77[=====     ] 57%  draw theta @ 45/77[=====     ] 58%  draw theta @ 46/77[=====     ] 59%  draw theta @ 47/77[======    ] 61%  draw theta @ 48/77[======    ] 62%  draw theta @ 49/77[======    ] 63%  draw theta @ 50/77[======    ] 64%  draw theta @ 51/77[======    ] 66%  draw theta @ 52/77[======    ] 67%  draw theta @ 53/77[======    ] 68%  draw theta @ 54/77[=======   ] 70%  draw theta @ 55/77[=======   ] 71%  draw theta @ 56/77[=======   ] 72%  draw theta @ 57/77[=======   ] 74%  draw theta @ 58/77[=======   ] 75%  draw theta @ 59/77[=======   ] 76%  draw theta @ 60/77[=======   ] 77%  draw theta @ 61/77[=======   ] 79%  draw theta @ 62/77[========  ] 80%  draw theta @ 63/77[========  ] 81%  draw theta @ 64/77[========  ] 83%  draw theta @ 65/77[========  ] 84%  draw theta @ 66/77[========  ] 85%  draw theta @ 67/77[========  ] 87%  draw theta @ 68/77[========  ] 88%  draw theta @ 69/77[========  ] 89%  draw theta @ 70/77[========= ] 90%  draw theta @ 71/77[========= ] 92%  draw theta @ 72/77[========= ] 93%  draw theta @ 73/77[========= ] 94%  draw theta @ 74/77[========= ] 96%  draw theta @ 75/77[========= ] 97%  draw theta @ 76/77[========= ] 98%  draw theta @ 77/77[==========] 100%  draw theta @ 77/77
+end draw theta @ 77/77
+
+[          ] 0%  draw vapor @ 1/77[          ] 1%  draw vapor @ 2/77[          ] 2%  draw vapor @ 3/77[          ] 3%  draw vapor @ 4/77[          ] 5%  draw vapor @ 5/77[          ] 6%  draw vapor @ 6/77[          ] 7%  draw vapor @ 7/77[          ] 9%  draw vapor @ 8/77[=         ] 10%  draw vapor @ 9/77[=         ] 11%  draw vapor @ 10/77[=         ] 12%  draw vapor @ 11/77[=         ] 14%  draw vapor @ 12/77[=         ] 15%  draw vapor @ 13/77[=         ] 16%  draw vapor @ 14/77[=         ] 18%  draw vapor @ 15/77[=         ] 19%  draw vapor @ 16/77[==        ] 20%  draw vapor @ 17/77[==        ] 22%  draw vapor @ 18/77[==        ] 23%  draw vapor @ 19/77[==        ] 24%  draw vapor @ 20/77[==        ] 25%  draw vapor @ 21/77[==        ] 27%  draw vapor @ 22/77[==        ] 28%  draw vapor @ 23/77[==        ] 29%  draw vapor @ 24/77[===       ] 31%  draw vapor @ 25/77[===       ] 32%  draw vapor @ 26/77[===       ] 33%  draw vapor @ 27/77[===       ] 35%  draw vapor @ 28/77[===       ] 36%  draw vapor @ 29/77[===       ] 37%  draw vapor @ 30/77[===       ] 38%  draw vapor @ 31/77[====      ] 40%  draw vapor @ 32/77[====      ] 41%  draw vapor @ 33/77[====      ] 42%  draw vapor @ 34/77[====      ] 44%  draw vapor @ 35/77[====      ] 45%  draw vapor @ 36/77[====      ] 46%  draw vapor @ 37/77[====      ] 48%  draw vapor @ 38/77[====      ] 49%  draw vapor @ 39/77[=====     ] 50%  draw vapor @ 40/77[=====     ] 51%  draw vapor @ 41/77[=====     ] 53%  draw vapor @ 42/77[=====     ] 54%  draw vapor @ 43/77[=====     ] 55%  draw vapor @ 44/77[=====     ] 57%  draw vapor @ 45/77[=====     ] 58%  draw vapor @ 46/77[=====     ] 59%  draw vapor @ 47/77[======    ] 61%  draw vapor @ 48/77[======    ] 62%  draw vapor @ 49/77[======    ] 63%  draw vapor @ 50/77[======    ] 64%  draw vapor @ 51/77[======    ] 66%  draw vapor @ 52/77[======    ] 67%  draw vapor @ 53/77[======    ] 68%  draw vapor @ 54/77[=======   ] 70%  draw vapor @ 55/77[=======   ] 71%  draw vapor @ 56/77[=======   ] 72%  draw vapor @ 57/77[=======   ] 74%  draw vapor @ 58/77[=======   ] 75%  draw vapor @ 59/77[=======   ] 76%  draw vapor @ 60/77[=======   ] 77%  draw vapor @ 61/77[=======   ] 79%  draw vapor @ 62/77[========  ] 80%  draw vapor @ 63/77[========  ] 81%  draw vapor @ 64/77[========  ] 83%  draw vapor @ 65/77[========  ] 84%  draw vapor @ 66/77[========  ] 85%  draw vapor @ 67/77[========  ] 87%  draw vapor @ 68/77[========  ] 88%  draw vapor @ 69/77[========  ] 89%  draw vapor @ 70/77[========= ] 90%  draw vapor @ 71/77[========= ] 92%  draw vapor @ 72/77[========= ] 93%  draw vapor @ 73/77[========= ] 94%  draw vapor @ 74/77[========= ] 96%  draw vapor @ 75/77[========= ] 97%  draw vapor @ 76/77[========= ] 98%  draw vapor @ 77/77[==========] 100%  draw vapor @ 77/77
+end draw vapor @ 77/77
+
+rm: 無法移除 ‘th.mkv’: 沒有此一檔案或目錄
+rm: 無法移除 ‘vapor.mkv’: 沒有此一檔案或目錄
+create video...
+ffmpeg version N-99363-gcc25ae5 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-39)
+  configuration: --prefix=/home/atmenu10246/.local/ --disable-x86asm
+  libavutil      56. 59.100 / 56. 59.100
+  libavcodec     58.107.100 / 58.107.100
+  libavformat    58. 59.100 / 58. 59.100
+  libavdevice    58. 11.102 / 58. 11.102
+  libavfilter     7. 87.100 /  7. 87.100
+  libswscale      5.  8.100 /  5.  8.100
+  libswresample   3.  8.100 /  3.  8.100
+Input #0, image2, from 'th%06d.jpg':
+  Duration: 00:00:15.40, start: 0.000000, bitrate: N/A
+    Stream #0:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 1920x1440 [SAR 300:300 DAR 4:3], 5 fps, 5 tbr, 5 tbn, 5 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg (native) -> mpeg4 (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x3ec8380] deprecated pixel format used, make sure you did set range correctly
+Output #0, mp4, to 'th.mp4':
+  Metadata:
+    encoder         : Lavf58.59.100
+    Stream #0:0: Video: mpeg4 (mp4v / 0x7634706D), yuv420p, 1920x1440 [SAR 1:1 DAR 4:3], q=2-31, 200 kb/s, 5 fps, 10240 tbn, 5 tbc
+    Metadata:
+      encoder         : Lavc58.107.100 mpeg4
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    8 fps=0.0 q=17.2 size=    1024kB time=00:00:01.40 bitrate=5991.7kbits/s speed=2.61x    frame=   18 fps= 17 q=31.0 size=    1280kB time=00:00:03.40 bitrate=3084.1kbits/s speed=3.19x    frame=   29 fps= 18 q=31.0 size=    1536kB time=00:00:05.60 bitrate=2247.0kbits/s speed=3.47x    frame=   40 fps= 19 q=31.0 size=    1792kB time=00:00:07.80 bitrate=1882.1kbits/s speed=3.64x    frame=   51 fps= 19 q=31.0 size=    2048kB time=00:00:10.00 bitrate=1677.7kbits/s speed=3.74x    frame=   62 fps= 19 q=31.0 size=    2304kB time=00:00:12.20 bitrate=1547.1kbits/s speed=3.82x    frame=   73 fps= 20 q=24.8 size=    2560kB time=00:00:14.40 bitrate=1456.4kbits/s speed=3.88x    frame=   77 fps= 20 q=31.0 Lsize=    2680kB time=00:00:15.20 bitrate=1444.3kbits/s speed=3.85x    
+video:2679kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.046010%
+ffmpeg version N-99363-gcc25ae5 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-39)
+  configuration: --prefix=/home/atmenu10246/.local/ --disable-x86asm
+  libavutil      56. 59.100 / 56. 59.100
+  libavcodec     58.107.100 / 58.107.100
+  libavformat    58. 59.100 / 58. 59.100
+  libavdevice    58. 11.102 / 58. 11.102
+  libavfilter     7. 87.100 /  7. 87.100
+  libswscale      5.  8.100 /  5.  8.100
+  libswresample   3.  8.100 /  3.  8.100
+Input #0, image2, from 'vapor%06d.jpg':
+  Duration: 00:00:15.40, start: 0.000000, bitrate: N/A
+    Stream #0:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 1920x1440 [SAR 300:300 DAR 4:3], 5 fps, 5 tbr, 5 tbn, 5 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg (native) -> mpeg4 (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x2f9f640] deprecated pixel format used, make sure you did set range correctly
+Output #0, mp4, to 'vapor.mp4':
+  Metadata:
+    encoder         : Lavf58.59.100
+    Stream #0:0: Video: mpeg4 (mp4v / 0x7634706D), yuv420p, 1920x1440 [SAR 1:1 DAR 4:3], q=2-31, 200 kb/s, 5 fps, 10240 tbn, 5 tbc
+    Metadata:
+      encoder         : Lavc58.107.100 mpeg4
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    9 fps=0.0 q=8.9 size=     256kB time=00:00:01.60 bitrate=1310.9kbits/s speed=3.18x    frame=   19 fps= 18 q=31.0 size=     256kB time=00:00:03.60 bitrate= 582.6kbits/s speed=3.43x    frame=   30 fps= 19 q=31.0 size=     512kB time=00:00:05.80 bitrate= 723.2kbits/s speed=3.72x    frame=   41 fps= 20 q=31.0 size=     512kB time=00:00:08.00 bitrate= 524.3kbits/s speed=3.83x    frame=   54 fps= 21 q=31.0 size=     768kB time=00:00:10.60 bitrate= 593.6kbits/s speed=4.03x    frame=   67 fps= 21 q=31.0 size=     768kB time=00:00:13.20 bitrate= 476.6kbits/s speed=4.18x    frame=   77 fps= 21 q=31.0 Lsize=    1112kB time=00:00:15.20 bitrate= 599.1kbits/s speed=4.22x    
+video:1110kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.109574%
