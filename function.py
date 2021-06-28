@@ -19,6 +19,6 @@ def buoyancy(th, qv):
         """
         thv = th * (1 + 0.622 * qv) # theta_v
         thvbar = np.mean(thv, (1, 2))
-        thvbar = np.tile(thvbar[:, np.newaxis, np.newaxis], (1, 128, 128)) # horizontal averaged theta_v
+        thvbar = np.tile(thvbar[:, np.newaxis, np.newaxis], (1, thv.shape[1], thv.shape[2])) # horizontal averaged theta_v
         B = (thv - thvbar) / thvbar
         return B

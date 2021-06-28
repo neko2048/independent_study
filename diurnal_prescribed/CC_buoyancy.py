@@ -29,15 +29,19 @@ def buoyancy_draw(init, end):
 	for t_idx in range(init, end):
 		progressbar(now=t_idx-init, length=end-init, text='draw_buoyancy')
 		td = netCDF4.Dataset(td_files[t_idx])
-		th = td['th'][0, :len(z), :, xslice]
-		qv = td['qv'][0, :len(z), :, xslice]
+		th = np.array(td['th'][0, :len(z), yslice, xslice])
+		qv = np.array(td['qv'][0, :len(z), yslice, xslice])
+		qc = np.array(td['qc'][0, :len(z), yslice, xslice])
+		time = int(np.array(td['Time']))
 		buo = buoyancy(th=th, qv=qv)
-		contourf(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, cmap='coolwarm', levels=20)
+		contourf(y, z, buo[:len(z), :, x_prof], vmin=-0.01, vmax=0.01, cmap='coolwarm', 
+			     levels=20)
 		colorbar()
+		contour(y, z, qc[:len(z), :, x_prof]>0, colors='grey', alpha=.5, linewidths=1)
 		#la = contour(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, levels=20)
 		#clabel(la, inline=True)
-		title('Time: %06d'%t_idx)
-		savefig('buoyancy%06d.jpg'%t_idx, dpi=300)
+		title('Time: %06d'%time)
+		savefig('buoyancy%06d.jpg'%time, dpi=300)
 		clf()
 
 ##### core generation #####
@@ -168,17 +172,23 @@ if __name__ == '__main__':
 	##### universal variables #####
 	dt = netCDF4.Dataset(td_files[0]) # take initial state
 	z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
-	xslice = slice(np.argmin(abs(x-35000)), np.argmin(abs(x-50000)))
-	x = x[xslice]
-	yslice =  slice(np.argmin(abs(y-30000)), np.argmin(abs(y-40000)))
-	y = y[yslice]
-	y_prof = np.argmin(abs(y-39000))
-	z = z[z<=15000]
-	xx, zz = np.meshgrid(x, z)
-	thbar = np.array(dt['th'][0, :len(z), 5, 5])
-	thbar = np.tile(thbar, (128, 1)).transpose()
+
+	xargmin, xargmax = np.argmin(abs(x - 39000)), np.argmin(abs(x - 43000))
+	x = x[xargmin:xargmax]
+	xslice = slice(xargmin, xargmax)
+	x_prof = np.argmin(abs(x - 41000))
+
+	yargmin, yargmax = np.argmin(abs(y - 30000)), np.argmin(abs(y - 45000))
+	y = y[yargmin:yargmax]
+	yslice = slice(yargmin, yargmax)
+	y_prof =  np.argmin(abs(y - 41000))# max thbar index
+	
+	z = z[z<=13000]
+
+	thbar = np.mean(dt['th'][0, :len(z), :, :], axis=(1, 2))
+	thbar = np.tile(thbar, (len(x), 1)).transpose()
 	# =============================
-	init, end = 300, 350#len(td_files)
+	init, end = 250, 350#len(td_files)
 	#core_draw(init, end)
 	#cloud_draw(init, end)
 	buoyancy_draw(init, end)
