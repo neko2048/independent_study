@@ -14,30 +14,39 @@ from nclcmaps import nclcmap
 
 
 
-def buoyancy(th, qv):
+def buoyancy(data):
 	"""
-	input: th(z, y, x) [K], qv(z, y, x) [kg/kg]
+	input: data
 	retrun buoyancy(z, y, x) [m/s^2]
 	"""
-	thv = th * (1 + 0.622 * qv) # theta_v
-	thvbar = np.mean(thv, (1, 2))
-	thvbar = np.tile(thvbar[:, np.newaxis, np.newaxis], (1, thv.shape[1], thv.shape[2])) # horizontal averaged theta_v
-	B = (thv - thvbar) / thvbar
+	th = np.array(data['th'][0, :len(z), yslice, xslice])
+	qv = np.array(data['qv'][0, :len(z), yslice, xslice])
+	qc = np.array(data['qc'][0, :len(z), yslice, xslice])
+	qi = np.array(data['qi'][0, :len(z), yslice, xslice])
+	qr = np.array(data['qr'][0, :len(z), yslice, xslice])
+	qs = np.array(data['qs'][0, :len(z), yslice, xslice])
+	qg = np.array(data['qg'][0, :len(z), yslice, xslice])
+	
+	B = ((th - thbar) / thbar + 0.61 * qv - qc - qr - qs - qg) * 9.81
+
 	return B
 
 def buoyancy_draw(init, end):
 	for t_idx in range(init, end):
 		progressbar(now=t_idx-init, length=end-init, text='draw_buoyancy')
 		td = netCDF4.Dataset(td_files[t_idx])
-		th = np.array(td['th'][0, :len(z), yslice, xslice])
-		qv = np.array(td['qv'][0, :len(z), yslice, xslice])
-		qc = np.array(td['qc'][0, :len(z), yslice, xslice])
+
 		time = int(np.array(td['Time']))
-		buo = buoyancy(th=th, qv=qv)
-		contourf(y, z, buo[:len(z), :, x_prof], vmin=-0.01, vmax=0.01, cmap='coolwarm', 
+
+		##### draw Buoyancy
+		buo = buoyancy(data=td)
+		contourf(y, z, buo[:len(z), :, x_prof], vmin=0, vmax=0.5, cmap='jet', 
 			     levels=20)
-		colorbar()
-		contour(y, z, qc[:len(z), :, x_prof]>0, colors='grey', alpha=.5, linewidths=1)
+		colorbar(extend='both')
+
+		##### draw cloud
+		qc = np.array(td['qc'][0, :len(z), yslice, xslice])
+		contour(y, z, qc[:len(z), :, x_prof]>0, colors='grey', alpha=1, linewidths=1, levels=[1])
 		#la = contour(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, levels=20)
 		#clabel(la, inline=True)
 		title('Time: %06d'%time)
@@ -172,21 +181,20 @@ if __name__ == '__main__':
 	##### universal variables #####
 	dt = netCDF4.Dataset(td_files[0]) # take initial state
 	z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
-
-	xargmin, xargmax = np.argmin(abs(x - 39000)), np.argmin(abs(x - 43000))
+	xargmin, xargmax = np.argmin(abs(x - 40800)), np.argmin(abs(x - 41200))
 	x = x[xargmin:xargmax]
 	xslice = slice(xargmin, xargmax)
 	x_prof = np.argmin(abs(x - 41000))
 
-	yargmin, yargmax = np.argmin(abs(y - 30000)), np.argmin(abs(y - 45000))
+	yargmin, yargmax = np.argmin(abs(y - 30000)), np.argmin(abs(y - 50000))
 	y = y[yargmin:yargmax]
 	yslice = slice(yargmin, yargmax)
-	y_prof =  np.argmin(abs(y - 41000))# max thbar index
+	y_prof =  np.argmin(abs(y - 41000))
 	
 	z = z[z<=13000]
-
-	thbar = np.mean(dt['th'][0, :len(z), :, :], axis=(1, 2))
-	thbar = np.tile(thbar, (len(x), 1)).transpose()
+	thbar = np.mean(dt['th'][0], axis=(1, 2))
+	thbar = np.tile(thbar[:len(z), np.newaxis, np.newaxis], (1, len(y), len(x)))
+	print('Dealing Shape: '+str(thbar.shape))
 	# =============================
 	init, end = 250, 350#len(td_files)
 	#core_draw(init, end)
