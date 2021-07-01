@@ -9,7 +9,13 @@ sys.path.insert(1, '../') # move 2 parent folder (figures/)
 from function import progressbar, buoyancy
 expname = 'diurnal_prescribed'
 
+data = netCDF4.Dataset('./nc_files/data000303.nc')
+for i in [data['xc'], data['yc'], data['zc'], data['buoyancy']]:
+    print(i.shape)
+
+
 if __name__ == '__main__':
+    pass
     ##### retrieve file names & location #####
     exp_name = expname
     td_loc = '/media/wk2/atmenu10246/VVM/DATA/' + exp_name + '/archive/'

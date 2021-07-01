@@ -27,3 +27,72 @@ Appended nc files: 361
 [          ] 0%  generating nc file @ 1/100[          ] 1%  generating nc file @ 2/100[          ] 2%  generating nc file @ 3/100[          ] 3%  generating nc file @ 4/100[          ] 4%  generating nc file @ 5/100[          ] 5%  generating nc file @ 6/100[          ] 6%  generating nc file @ 7/100[          ] 7%  generating nc file @ 8/100[          ] 8%  generating nc file @ 9/100[          ] 9%  generating nc file @ 10/100[=         ] 10%  generating nc file @ 11/100[=         ] 11%  generating nc file @ 12/100[=         ] 12%  generating nc file @ 13/100[=         ] 13%  generating nc file @ 14/100[=         ] 14%  generating nc file @ 15/100[=         ] 15%  generating nc file @ 16/100[=         ] 16%  generating nc file @ 17/100[=         ] 17%  generating nc file @ 18/100[=         ] 18%  generating nc file @ 19/100[=         ] 19%  generating nc file @ 20/100[==        ] 20%  generating nc file @ 21/100[==        ] 21%  generating nc file @ 22/100[==        ] 22%  generating nc file @ 23/100[==        ] 23%  generating nc file @ 24/100[==        ] 24%  generating nc file @ 25/100[==        ] 25%  generating nc file @ 26/100[==        ] 26%  generating nc file @ 27/100[==        ] 27%  generating nc file @ 28/100[==        ] 28%  generating nc file @ 29/100[==        ] 28%  generating nc file @ 30/100[===       ] 30%  generating nc file @ 31/100[===       ] 31%  generating nc file @ 32/100[===       ] 32%  generating nc file @ 33/100[===       ] 33%  generating nc file @ 34/100[===       ] 34%  generating nc file @ 35/100[===       ] 35%  generating nc file @ 36/100[===       ] 36%  generating nc file @ 37/100[===       ] 37%  generating nc file @ 38/100[===       ] 38%  generating nc file @ 39/100[===       ] 39%  generating nc file @ 40/100[====      ] 40%  generating nc file @ 41/100[====      ] 41%  generating nc file @ 42/100[====      ] 42%  generating nc file @ 43/100[====      ] 43%  generating nc file @ 44/100[====      ] 44%  generating nc file @ 45/100[====      ] 45%  generating nc file @ 46/100[====      ] 46%  generating nc file @ 47/100[====      ] 47%  generating nc file @ 48/100[====      ] 48%  generating nc file @ 49/100[====      ] 49%  generating nc file @ 50/100[=====     ] 50%  generating nc file @ 51/100[=====     ] 51%  generating nc file @ 52/100[=====     ] 52%  generating nc file @ 53/100[=====     ] 53%  generating nc file @ 54/100[=====     ] 54%  generating nc file @ 55/100[=====     ] 55%  generating nc file @ 56/100[=====     ] 56%  generating nc file @ 57/100[=====     ] 56%  generating nc file @ 58/100[=====     ] 57%  generating nc file @ 59/100[=====     ] 59%  generating nc file @ 60/100[======    ] 60%  generating nc file @ 61/100[======    ] 61%  generating nc file @ 62/100[======    ] 62%  generating nc file @ 63/100[======    ] 63%  generating nc file @ 64/100[======    ] 64%  generating nc file @ 65/100[======    ] 65%  generating nc file @ 66/100[======    ] 66%  generating nc file @ 67/100[======    ] 67%  generating nc file @ 68/100[======    ] 68%  generating nc file @ 69/100[======    ] 69%  generating nc file @ 70/100[=======   ] 70%  generating nc file @ 71/100[=======   ] 71%  generating nc file @ 72/100[=======   ] 72%  generating nc file @ 73/100[=======   ] 73%  generating nc file @ 74/100[=======   ] 74%  generating nc file @ 75/100[=======   ] 75%  generating nc file @ 76/100[=======   ] 76%  generating nc file @ 77/100[=======   ] 77%  generating nc file @ 78/100[=======   ] 78%  generating nc file @ 79/100[=======   ] 79%  generating nc file @ 80/100[========  ] 80%  generating nc file @ 81/100[========  ] 81%  generating nc file @ 82/100[========  ] 82%  generating nc file @ 83/100[========  ] 83%  generating nc file @ 84/100[========  ] 84%  generating nc file @ 85/100[========  ] 85%  generating nc file @ 86/100[========  ] 86%  generating nc file @ 87/100[========  ] 87%  generating nc file @ 88/100[========  ] 88%  generating nc file @ 89/100[========  ] 89%  generating nc file @ 90/100[========= ] 90%  generating nc file @ 91/100[========= ] 91%  generating nc file @ 92/100[========= ] 92%  generating nc file @ 93/100[========= ] 93%  generating nc file @ 94/100[========= ] 94%  generating nc file @ 95/100[========= ] 95%  generating nc file @ 96/100[========= ] 96%  generating nc file @ 97/100[========= ] 97%  generating nc file @ 98/100[========= ] 98%  generating nc file @ 99/100[========= ] 99%  generating nc file @ 100/100[==========] 100%  generating nc file @ 100/100
 end generating nc file @ 100/100
 
+rm: 無法移除 ‘./nc_files/*.nc’: 沒有此一檔案或目錄
+rm: 無法移除 ‘buoyancy_npy/*.npy,’: 沒有此一檔案或目錄
+rm: 無法移除 ‘dwdt_npy/*.npy’: 沒有此一檔案或目錄
+mkdir: 無法建立目錄‘nc_files’: 檔案已存在
+mkdir: 無法建立目錄‘buoyancy_npy’: 檔案已存在
+mkdir: 無法建立目錄‘dwdt_npy’: 檔案已存在
+Appended nc files: 361
+[          ] 0%  generating nc file @ 1/47Appended nc files: 361
+[          ] 0%  generating nc file @ 1/47Traceback (most recent call last):
+  File "save2nc.py", line 98, in <module>
+    buo = buoyancy(td)
+  File "save2nc.py", line 25, in buoyancy
+    np.save('buoyancy{0:06d}.npy'.format(tidx), B)
+  File "<__array_function__ internals>", line 6, in save
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py", line 553, in save
+    pickle_kwargs=pickle_kwargs)
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/lib/format.py", line 687, in write_array
+    array.tofile(fp)
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/ma/core.py", line 6034, in tofile
+    raise NotImplementedError("MaskedArray.tofile() not implemented yet.")
+NotImplementedError: MaskedArray.tofile() not implemented yet.
+Traceback (most recent call last):
+  File "save2nc.py", line 98, in <module>
+    buo = buoyancy(td)
+  File "save2nc.py", line 25, in buoyancy
+    np.save('buoyancy{0:06d}.npy'.format(tidx), B)
+  File "<__array_function__ internals>", line 6, in save
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py", line 553, in save
+    pickle_kwargs=pickle_kwargs)
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/lib/format.py", line 687, in write_array
+    array.tofile(fp)
+  File "/home/atmenu10246/anaconda3/lib/python3.7/site-packages/numpy/ma/core.py", line 6034, in tofile
+    raise NotImplementedError("MaskedArray.tofile() not implemented yet.")
+NotImplementedError: MaskedArray.tofile() not implemented yet.
+rm: 無法移除 ‘./nc_files/*.nc’: 沒有此一檔案或目錄
+rm: 無法移除 ‘buoyancy_npy/*.npy,’: 沒有此一檔案或目錄
+rm: 無法移除 ‘dwdt_npy/*.npy’: 沒有此一檔案或目錄
+mkdir: 無法建立目錄‘nc_files’: 檔案已存在
+mkdir: 無法建立目錄‘buoyancy_npy’: 檔案已存在
+mkdir: 無法建立目錄‘dwdt_npy’: 檔案已存在
+Appended nc files: 361
+[          ] 0%  generating nc file @ 1/47[          ] 2%  generating nc file @ 2/47[          ] 4%  generating nc file @ 3/47[          ] 6%  generating nc file @ 4/47[          ] 8%  generating nc file @ 5/47save2nc.sh: line 12: 20135 Done                    echo "$BASENAME"
+     20136 終止                  | python save2nc.py
+rm: 無法移除 ‘buoyancy_npy/*.npy,’: 沒有此一檔案或目錄
+rm: 無法移除 ‘dwdt_npy/*.npy’: 沒有此一檔案或目錄
+mkdir: 無法建立目錄‘nc_files’: 檔案已存在
+mkdir: 無法建立目錄‘buoyancy_npy’: 檔案已存在
+mkdir: 無法建立目錄‘dwdt_npy’: 檔案已存在
+Appended nc files: 361
+[303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318]
+Traceback (most recent call last):
+  File "save2nc_pa.py", line 128, in <module>
+    execution(case_group)
+  File "save2nc_pa.py", line 72, in execution
+    td = netCDF4.Dataset(td_files[tidx])
+TypeError: only integer scalar arrays can be converted to a scalar index
+rm: 無法移除 ‘./nc_files/*.nc’: 沒有此一檔案或目錄
+rm: 無法移除 ‘buoyancy_npy/*.npy,’: 沒有此一檔案或目錄
+rm: 無法移除 ‘dwdt_npy/*.npy’: 沒有此一檔案或目錄
+mkdir: 無法建立目錄‘nc_files’: 檔案已存在
+mkdir: 無法建立目錄‘buoyancy_npy’: 檔案已存在
+mkdir: 無法建立目錄‘dwdt_npy’: 檔案已存在
+Appended nc files: 361
+Traceback (most recent call last):
+  File "save2nc_pa.py", line 129, in <module>
+    execution(case_group)
+  File "save2nc_pa.py", line 69, in execution
+    tidx = int(tidx)
+TypeError: only size-1 arrays can be converted to Python scalars
