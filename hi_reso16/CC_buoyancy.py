@@ -14,30 +14,43 @@ from nclcmaps import nclcmap
 
 
 
-def buoyancy(th, qv):
+def buoyancy(data):
 	"""
-	input: th(z, y, x) [K], qv(z, y, x) [kg/kg]
+	input: data
 	retrun buoyancy(z, y, x) [m/s^2]
 	"""
-	thv = th * (1 + 0.622 * qv) # theta_v
-	thvbar = np.mean(thv, (1, 2))
-	thvbar = np.tile(thvbar[:, np.newaxis, np.newaxis], (1, 128, 128)) # horizontal averaged theta_v
-	B = (thv - thvbar) / thvbar
+	th = np.array(data['th'][0, :len(z), yslice, xslice])
+	qv = np.array(data['qv'][0, :len(z), yslice, xslice])
+	qc = np.array(data['qc'][0, :len(z), yslice, xslice])
+	qi = np.array(data['qi'][0, :len(z), yslice, xslice])
+	qr = np.array(data['qr'][0, :len(z), yslice, xslice])
+	qs = np.array(data['qs'][0, :len(z), yslice, xslice])
+	qg = np.array(data['qg'][0, :len(z), yslice, xslice])
+	
+	B = ((th - thbar) / thbar + 0.61 * qv - qc - qr - qs - qg) * 9.81
+
 	return B
 
 def buoyancy_draw(init, end):
 	for t_idx in range(init, end):
-		progressbar(now=t_idx, length=len(td_files), text='draw_buoyancy')
+		progressbar(now=t_idx-init, length=end-init, text='draw_buoyancy')
 		td = netCDF4.Dataset(td_files[t_idx])
-		th = td['th'][0, :, :, :]
-		qv = td['qv'][0, :, :, :]
-		buo = buoyancy(th=th, qv=qv)
-		contourf(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, cmap='coolwarm', levels=20)
-		colorbar()
-		la = contour(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, levels=20)
-		clabel(la, inline=True)
-		title('Time: %06d'%t_idx)
-		savefig('buoyancy%06d.jpg'%t_idx, dpi=300)
+
+		time = int(np.array(td['Time']))
+
+		##### draw Buoyancy
+		buo = buoyancy(data=td)
+		contourf(y, z, buo[:len(z), :, x_prof], vmin=-0.2, vmax=0.2, cmap='jet', 
+			     levels=20)
+		colorbar(extend='both')
+
+		##### draw cloud
+		qc = np.array(td['qc'][0, :len(z), yslice, xslice])
+		contour(y, z, qc[:len(z), :, x_prof]>0, colors='grey', alpha=1, linewidths=1, levels=[1])
+		#la = contour(x, z, buo[:len(z), y_prof, :], vmin=-0.01, vmax=0.01, levels=20)
+		#clabel(la, inline=True)
+		title('Time: %06d'%time)
+		savefig('buoyancy%06d.jpg'%time, dpi=300)
 		clf()
 
 ##### core generation #####
@@ -65,7 +78,7 @@ def core_filter(t_idx, save=True):
 	return buoyancy filtered by core
 	"""
 	td, dy = netCDF4.Dataset(td_files[t_idx]), netCDF4.Dataset(dy_files[t_idx])
-	progressbar(now=t_idx, length=len(td_files), 
+	pprogressbar(now=t_idx-init, length=end-init, 
 		    text='draw_core')
 	t = int(np.array(td['Time']))
 	# thermal dynamic variables
@@ -120,7 +133,7 @@ def cloud_filter(t_idx, save=True):
 	"""
 
 	td, dy = netCDF4.Dataset(td_files[t_idx]), netCDF4.Dataset(dy_files[t_idx])
-	progressbar(now=t_idx, length=len(td_files),
+	progressbar(now=t_idx-init, length=end-init, 
                     text='draw_core')
 	t = int(np.array(td['Time']))
 	# thermal dynamic variables
@@ -158,7 +171,7 @@ if __name__ == '__main__':
 	exp_name = str(input())
 	td_loc = '/media/wk2/atmenu10246/VVM/DATA/' + exp_name + '/archive/'
 	td_files, dy_files = [], []
-	for td, dy in zip(glob.glob(td_loc +exp_name + '.L.Thermodynamic-??????.nc'), glob.glob(td_loc + exp_name + '.L.Dynamic-??????.nc')):
+	for td, dy in zip(glob.glob(td_loc + exp_name + '.L.Thermodynamic-??????.nc'), glob.glob(td_loc + exp_name + '.L.Dynamic-??????.nc')):
 		td_files.append(td)
 		dy_files.append(dy)
 	print('Appended nc files: '+ str(len(td_files)))
@@ -168,14 +181,22 @@ if __name__ == '__main__':
 	##### universal variables #####
 	dt = netCDF4.Dataset(td_files[0]) # take initial state
 	z, y, x = np.array(dt['zc']), np.array(dt['yc']), np.array(dt['xc'])
-	x = x - max(x)/2
-	z = z[z<=3000]
-	xx, zz = np.meshgrid(x, z)
-	thbar = np.array(dt['th'][0, :len(z), 5, 5])
-	thbar = np.tile(thbar, (128, 1)).transpose()
-	y_prof =  63 # max thbar index
+	#xargmin, xargmax = np.argmin(abs(x - np.min(x))), np.argmin(abs(x - np.max(x)))
+	#x = x[xargmin:xargmax]
+	xslice = slice(0, len(x))
+	x_prof = np.argmin(abs(x - np.max(x)/2))
+
+	#yargmin, yargmax = np.argmin(abs(y - np.min(y))), np.argmin(abs(y - np.max(y)))
+	#y = y[yargmin:yargmax]
+	yslice = slice(0, len(y))
+	y_prof =  np.argmin(abs(y - np.max(y)/2))
+	
+	z = z[z<=15000]
+	thbar = np.mean(dt['th'][0], axis=(1, 2))
+	thbar = np.tile(thbar[:len(z), np.newaxis, np.newaxis], (1, len(y), len(x)))
+	print('Dealing Shape: '+str(thbar.shape))
 	# =============================
-	init, end = 0, 10#len(td_files)
+	init, end = 0, len(td_files)
 	#core_draw(init, end)
 	#cloud_draw(init, end)
 	buoyancy_draw(init, end)
